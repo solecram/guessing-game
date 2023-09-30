@@ -20,6 +20,8 @@ int main() {
     int acertou;
     int nivel;
     int totaldetentativas;
+    int inicio;
+    int fim;
 
     // definindo a quantidade de pontos iniciais
     double pontos = 1000;
@@ -27,13 +29,17 @@ int main() {
     
     // É necessário para gerar um número secreto randomico
     srand(time(0));
-    int numerosecreto = rand() % 100;
     
     // Menu
     printf("Qual o nível de dificuldade? \n");
     printf("(1) Fácil, (2) Médio, (3) Difícil\n\n");
     printf("Escolha: ");
     scanf("%d", &nivel);
+    printf("Escolha o valor de início e fim do intervalo ex.:<0 200>: ");
+    scanf("%d %d", &inicio, &fim);
+
+    int numerosecreto = rand() % (fim - inicio + 1) + inicio;
+
     
     switch (nivel)
     {
