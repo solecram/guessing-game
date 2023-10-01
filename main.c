@@ -11,6 +11,7 @@ int main() {
     int inicio;
     int fim;
     int jogarnovamente = 1;
+    int ultimochute = -1;
 
     // definindo a quantidade de pontos iniciais
     double pontos = 1000;
@@ -61,8 +62,16 @@ int main() {
             printf("Chute um número: ");
             scanf("%d", &chute);
 
+            // trata se o chute atual é igual ao último
+            if (chute == ultimochute) {
+                printf("Você já chutou o mesmo número na tentativa anterior. Tente outro número!\n\n");
+                continue;
+            } else {
+                ultimochute = chute;
+            }
+
             // trata o chute de um número negativo
-            if(chute < 0) {
+            if (chute < 0) {
                 printf("Você não pode chutar números negativos!\n");
                 i--;
                 continue;
@@ -71,7 +80,7 @@ int main() {
             // verifica se acertou, se foi maior ou menor
             acertou = (chute == numerosecreto);
     
-            if(acertou) {
+            if (acertou) {
                 break;
             } else if(chute > numerosecreto) {
                 printf("Seu chute foi MAIOR que o número secreto\n");
@@ -84,7 +93,7 @@ int main() {
             pontos = pontos - pontosperdidos;
         }
         
-        if(acertou) {
+        if (acertou) {
             printf("             OOOOOOOOOOO               \n");
             printf("         OOOOOOOOOOOOOOOOOOO           \n");
             printf("      OOOOOO  OOOOOOOOO  OOOOOO        \n");
